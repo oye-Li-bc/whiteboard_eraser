@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- 竖直白板：前表面贴"诗句纹理"(materials/textures/poem.png，由 gen_poem_texture 生成)。
+     模型原点 = 白板前表面中心，spawn 于 (Xb, 0, center_z) = (0.42, 0, 0.35)。
+     +x 指向板内(远离机械臂)；前表面(朝机械臂那面, x≈Xb)显示诗句。
+     纹理与 material 脚本通过 GAZEBO_RESOURCE_PATH(=包内 models 目录) 解析，
+     见 wipe_demo.launch.py 里对该环境变量的设置。 -->
+<sdf version="1.6">
+  <model name="whiteboard">
+    <static>true</static>
+    <link name="board_link">
+      <!-- 白板本体：厚0.02(x) 宽0.40(y) 高0.30(z)，中心在板内0.01处 -->
+      <visual name="board_visual">
+        <pose>0.01 0 0 0 0 0</pose>
+        <geometry><box><size>0.02 0.40 0.30</size></box></geometry>
+        <material>
+          <script>
+            <uri>file://materials/scripts</uri>
+            <uri>file://materials/textures</uri>
+            <name>WhiteboardPoem/Poem</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="board_collision">
+        <pose>0.01 0 0 0 0 0</pose>
+        <geometry><box><size>0.02 0.40 0.30</size></box></geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

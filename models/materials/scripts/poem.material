@@ -1,0 +1,14 @@
+material WhiteboardPoem/Poem
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture poem.png
+        filtering trilinear
+      }
+    }
+  }
+}

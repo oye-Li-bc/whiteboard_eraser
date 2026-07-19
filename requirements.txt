@@ -1,0 +1,16 @@
+# Python 依赖(CPU 即可)。ROS 侧的 rclpy / cv_bridge / tf2 / moveit_msgs /
+# sensor_msgs 等来自 ROS 2 Humble 安装,不通过 pip 装。
+#
+# 安装建议(国内):先 unset 代理避免 SSL EOF,numpy 必须锁 1.26.4 否则崩 ROS Humble。
+#   unset http_proxy https_proxy all_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY
+#   pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+
+numpy==1.26.4
+opencv-python==4.10.0.84
+scipy
+pyyaml
+pillow
+
+# OCR(PP-OCRv5;首次运行联网下模型到 ~/.paddlex,需能访问 modelscope)
+paddlepaddle==3.3.1
+paddleocr==3.7.0

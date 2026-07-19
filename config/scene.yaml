@@ -1,0 +1,40 @@
+# 擦白板仿真场景的全部几何参数（单一真源）
+# 世界系 = base_link，x 向前，z 向上，单位 m / rad
+board:
+  Xb: 0.42            # 白板前表面 x（机械臂这一侧，marker 与擦头接触面）
+  thickness: 0.02     # 板厚（x 方向）
+  center_y: 0.0
+  center_z: 0.35
+  width_y: 0.40       # 板宽 (y)
+  height_z: 0.30      # 板高 (z)
+
+camera:
+  x: 0.20             # 相机在机械臂侧前方(避开竖直手臂遮挡)，斜看白板
+  y: -0.40
+  z: 0.55
+  roll: 0.0
+  pitch: 0.449        # 朝白板中心 (0.42,0,0.33)：yaw/pitch 由位置算得
+  yaw: 1.068
+  width: 640
+  height: 480
+  hfov: 1.20          # 水平视场角(rad)
+  link_frame: board_camera_link
+  optical_frame: board_camera_optical
+
+eraser:
+  length: 0.06        # 擦头沿 Link6 工具轴(+z)凸出长度
+  half: 0.010         # 擦头面半宽（弓字形行距用 = 2*half）
+  press: 0.002        # 压入板面深度
+
+# 黑字 marker：贴在板前表面，y/z 为中心，w/h 为板面内尺寸(y×z)
+marks:
+  - {y: -0.08, z: 0.40, w: 0.10, h: 0.04}
+  - {y:  0.07, z: 0.32, w: 0.08, h: 0.05}
+  - {y: -0.02, z: 0.25, w: 0.12, h: 0.03}
+
+robot:
+  group: rm_group
+  base_frame: base_link
+  ee_link: Link6
+  controller_action: /rm_group_controller/follow_joint_trajectory
+  joints: [joint1, joint2, joint3, joint4, joint5, joint6]
