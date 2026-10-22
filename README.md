@@ -1,6 +1,6 @@
 # Whiteboard Eraser · RM65
 
-![Whiteboard Eraser · RM65 项目封面](.github/readme/cover.svg)
+![Whiteboard Eraser · RM65 项目封面](.github/readme/cover-imagegen.webp)
 
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-516d64)](LICENSE)
 ![RM65 / PADDLEOCR](https://img.shields.io/badge/RM65%20%2F%20PADDLEOCR-project-516d64)
@@ -152,4 +152,4 @@ ros2 run whiteboard_eraser gen_poem_texture \
 
 ---
 
-[个人作品集](https://oye-li-bc.github.io/) · [可编辑封面与配图说明](.github/readme/README.md)
+[个人作品集](https://oye-li-bc.github.io/) · [封面来源与配图说明](.github/readme/README.md)
