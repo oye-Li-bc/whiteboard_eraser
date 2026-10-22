@@ -1,4 +1,10 @@
-# whiteboard_eraser — RM65 机械臂 AI 识别古诗错别字并擦除
+# Whiteboard Eraser · RM65
+
+![Whiteboard Eraser · RM65 项目封面](.github/readme/cover.svg)
+
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-516d64)](LICENSE)
+![RM65 / PADDLEOCR](https://img.shields.io/badge/RM65%20%2F%20PADDLEOCR-project-516d64)
+[![Portfolio](https://img.shields.io/badge/oye-portfolio-516d64)](https://oye-li-bc.github.io/)
 
 RM65 机械臂在 Gazebo 仿真中，用 **PaddleOCR** 识别白板上的古诗，与标准诗句比对找出**错别字**，
 控制机械臂只擦掉那一个错字，并在原位盖一块白色补丁使其"消失"。
@@ -7,6 +13,15 @@ RM65 机械臂在 Gazebo 仿真中，用 **PaddleOCR** 识别白板上的古诗�
 > 原生 movej 运动、贴板来回擦,含最终跑通参数与踩坑记录。本文件只讲 Gazebo 仿真。
 
 ---
+
+**[功能流程](#workflow) · [环境依赖](#environment) · [运行](#run) · [真机版本](README_REAL.md) · [问题排查](#troubleshooting)**
+
+<picture>
+  <source media="(max-width: 600px)" srcset=".github/readme/workflow-mobile.svg">
+  <img src=".github/readme/workflow.svg" alt="项目学习与运行路线概览，完整步骤及依赖见下文说明">
+</picture>
+
+<a id="workflow"></a>
 
 ## 1. 功能流程
 
@@ -23,6 +38,8 @@ RM65 机械臂在 Gazebo 仿真中，用 **PaddleOCR** 识别白板上的古诗�
   错字位置靠"OCR 结果 vs 标准诗句"的差异算出，不是直接读答案。
 
 ---
+
+<a id="environment"></a>
 
 ## 2. 依赖环境
 
@@ -49,6 +66,8 @@ pip install opencv-python pillow pyyaml
 
 ---
 
+<a id="build"></a>
+
 ## 3. 编译
 
 ```bash
@@ -60,6 +79,8 @@ source install/setup.bash
 > 不要用 `--symlink-install`（对本包的 materials 嵌套 data_files 会报错），用普通 `colcon build`。
 
 ---
+
+<a id="run"></a>
 
 ## 4. 运行
 
@@ -116,6 +137,8 @@ ros2 run whiteboard_eraser gen_poem_texture \
 
 ---
 
+<a id="troubleshooting"></a>
+
 ## 7. 已知坑排查
 
 | 现象 | 原因 / 解决 |
@@ -126,3 +149,7 @@ ros2 run whiteboard_eraser gen_poem_texture \
 | OCR 把一列字读成一行 | 贴图行距要 > 列距（已在 gen_poem_texture 处理） |
 | 擦拭范围太大糊到邻字 | 调小 `eraser`（URDF box 尺寸 + `scene.yaml half`）、detect 的字格取值比例、白补丁封顶 |
 | 白板上诗句是镜像/倒的 | Gazebo box 面 UV 问题 → 需在 `gen_poem_texture.render` 加水平/垂直翻转（如遇到再加开关） |
+
+---
+
+[个人作品集](https://oye-li-bc.github.io/) · [可编辑封面与配图说明](.github/readme/README.md)
